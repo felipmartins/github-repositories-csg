@@ -13,12 +13,12 @@
 - [X] Create templates;
 - [X] Include celery for periodic tasks;
 - [X] Write documentation for running the project;
-- [ ] Add pytest routine to pre-commit;
-- [ ] Test entities;
+- [X] Add pytest routine to pre-commit;
+- [X] Test entities;
 - [ ] Test repositories;
 - [ ] Test controllers;
 - [ ] Test github api integration;
-- [ ] Complete documentation: running the tests;
+- [X] Complete documentation: running the tests;
 - [ ] Styling templates;
 - [ ] Configure workflows;
 
@@ -83,3 +83,11 @@ celery -A src.celery beat -l info
 - Tasks will be executed every 30 seconds for proof of concept;
 
 --- 
+
+# Running the tests
+
+- Run the tests;
+
+```bash
+python3 -m pytest
+```
