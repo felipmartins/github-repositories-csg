@@ -2,6 +2,7 @@ import os
 import pytest
 from src.entities.repos import Repo
 from src.entities.users import User
+from src.repositories.user_repository import UserRepository
 
 
 @pytest.fixture
@@ -33,3 +34,8 @@ def mock_config():
         "MONGO_URI": os.getenv("MONGO_URI", "mongodb://localhost:27017"),
         "DB_NAME": os.getenv("DB_NAME", "test_csgi_test"),
     }
+
+
+@pytest.fixture(autouse=True, scope="function")
+def clean_db(mock_config):
+    UserRepository(mock_config)._collection.drop()
