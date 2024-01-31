@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repositories from {{user.name}}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div>
+      <div>
+        {% if user.is_new %}
+        <h1>User's repositories searched for the first time</h1>
+        {% else %}
+        <h1>User's repositories already searched before</h1>
+        {% endif %}
+      </div>
+
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>URL</th>
+              <th>Description</th>
+              <th>Language</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for repo in user.repos %}
+            <tr>
+              <td>{{repo.name}}</td>
+              <td>{{repo.html_url}}</td>
+              <td>{{repo.description}}</td>
+              <td>{{repo.language}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <form action="/" method="post">
+          <label for="name">Get repositories data for a Github user:</label>
+          <input type="text" name="name" placeholder="Github Username" />
+          <input type="submit" value="Get data" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
