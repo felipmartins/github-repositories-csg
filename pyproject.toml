@@ -11,3 +11,5 @@ addopts = "-s -vv"
 testpaths = [
     "tests",
 ]
+filterwarnings = ["ignore::pytest.PytestDeprecationWarning"]
+env = ["DB_NAME = test_csgi_test"]
